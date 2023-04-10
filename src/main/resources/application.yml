@@ -1,0 +1,14 @@
+server:
+  port: 10000
+
+spring:
+  mvc:
+    format:
+      date-time: iso
+  profiles:
+    active: dev
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    check-template-location: true

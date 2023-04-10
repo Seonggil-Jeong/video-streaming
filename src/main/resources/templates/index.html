@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>basic file upload</title>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <label>
+        <input type="text" name="description">
+    </label>
+    <input type="submit"/>
+</form>
+
+<div id="result"></div>
+
+</body>
+
+<script type="application/javascript">
+    const formElement = document.querySelector('form');
+    const resultElement = document.querySelector('div');
+
+    formElement.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(formElement);
+
+        const response = await fetch('/videos', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            resultElement.textContent = await response.text();
+        } else {
+            throw new Error(`${response.status} ${response.statusText}`);
+        }
+    });
+</script>
+</html>

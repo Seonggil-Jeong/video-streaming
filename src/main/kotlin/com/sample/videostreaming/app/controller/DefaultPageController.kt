@@ -10,9 +10,13 @@ class DefaultPageController {
 
     }
 
-
     @RequestMapping(value = ["/index", "/"])
     fun moveToIndexPage(): String {
         return "/index"
+    }
+
+    @RequestMapping(value = ["/chunk"])
+    fun moveToChunkUploadPage(): String {
+        return "/chunk-upload"
     }
 }
